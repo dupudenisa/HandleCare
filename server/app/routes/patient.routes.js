@@ -7,6 +7,7 @@ module.exports = app => {
     */
 
     const patients = require("../controllers/patient.controller.js");
+    
   
     var router = require("express").Router();
   
@@ -28,8 +29,13 @@ module.exports = app => {
     // Delete a Patient with id
     router.delete("/:id", patients.delete);
   
-    // Create a new Patient
+    //delete all  Patient
     router.delete("/", patients.deleteAll);
   
     app.use('/api/patients', router);
+   
+  
+
+
   };
+

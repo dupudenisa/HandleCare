@@ -8,7 +8,27 @@ module.exports = (sequelize, Sequelize) => {
       },
       currentResident: {
         type: Sequelize.BOOLEAN
+      },
+      
+      food: {
+        type: Sequelize.STRING
+      },
+      sleep_cycle: {
+        type: Sequelize.STRING
+      },
+      exersize: {
+        type: Sequelize.STRING
+      },
+      communication: {
+        type: Sequelize.STRING
+      },
+      outdoor_events: {
+        type: Sequelize.STRING
+      },
+      patientinfo_id: {
+        type: Sequelize.INTEGER
       }
+
     });
   
     return Patient;

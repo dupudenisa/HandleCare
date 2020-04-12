@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     }
 
     // Create a comment
-    const Comments = {
+    const comment = {
         id: req.body.id,
         comments: req.body.comments,
         Userid: req.body.Userid
@@ -21,7 +21,7 @@ exports.create = (req, res) => {
     };
 
     // Save a comment in the database
-    Comments.create(comments)
+    Comments.create(comment)
         .then(data => {
             res.send(data);
         })
@@ -36,10 +36,10 @@ exports.create = (req, res) => {
 
 // Retrieve all comments from the database. ?????
 exports.findAll = (req, res) => {
-    const Userid = req.query.Userid;
-    var condition = Userid ? { Userid: { [Op.like]: `%${name}%` } } : null;
+    const comments = req.query.comments;
+    var condition = comments ? { comments: { [Op.like]: `%${comments}%` } } : null;
 
-    Userid.findAll({ where: condition })
+    Comments.findAll({ where: condition })
         .then(data => {
             res.send(data);
         })

@@ -140,7 +140,7 @@ exports.deleteAll = (req, res) => {
 
 // Find all currentResident Patients
 exports.findAllcurrentResident = (req, res) => {
-    Patientt.findAll({ where: { currentResident: true } })
+    Patient.findAll({ where: { currentResident: true } })
         .then(data => {
             res.send(data);
         })

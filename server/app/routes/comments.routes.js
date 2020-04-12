@@ -11,13 +11,13 @@ router.post("/", comments.create);
 router.get("/", comments.findAll);
 
 //retrive a single comment with id 
-router.get("/", comments.findOne);
+//router.get("/", comments.findOne);
 
 // Delete a Patient with id
-router.delete("/:id", patients.delete);
+router.delete("/:id", comments.delete);
   
 //delete all  Patient
-router.delete("/", patients.deleteAll);
+router.delete("/", comments.deleteAll);
 
 app.use('/api/comments', router);
 

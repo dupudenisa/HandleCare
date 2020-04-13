@@ -1,32 +1,46 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Patient = sequelize.define("patient", {
       name: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
+        description: DataTypes.TEXT,
+          allowNull: true
       },
       age: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       currentResident: {
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
       },
       
       food: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
+        description: DataTypes.TEXT,
+          allowNull: true
       },
       sleep_cycle: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
+        description: DataTypes.TEXT,
+          allowNull: true
       },
       exersize: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
+        description: DataTypes.TEXT,
+          allowNull: true
       },
       communication: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
+        description: DataTypes.TEXT,
+          allowNull: true
       },
       outdoor_events: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
+        description: DataTypes.TEXT,
+          allowNull: true
       },
       patientinfo_id: {
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER,
+        description: DataTypes.TEXT,
+          allowNull: true
       }
 
     });

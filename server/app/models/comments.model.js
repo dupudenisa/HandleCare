@@ -1,15 +1,26 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
+  
     const Comments = sequelize.define("comments", {
 
       comments: {
-          type: Sequelize.STRING
+          type: DataTypes.STRING,
+          description: DataTypes.TEXT,
+          allowNull: false
       },
       
       Userid: {
-          type: Sequelize.INTEGER
+          type: DataTypes.INTEGER
       }
 
       });
+
+      Comments.associate = function(models) {
+        Comment.belongsTo(models.User, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
 
       return Comments;
       

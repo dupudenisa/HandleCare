@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AddPatient from "./components/add-patient.component";
 import Patient from "./components/patient.component";
 import PatientsList from "./components/patients-list.component";
+import NavTabs from "./components/NavTabs"
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
               <Route exact path={["/", "/patients"]} component={PatientsList} />
               <Route exact path="/add" component={AddPatient} />
               <Route path="/patients/:id" component={Patient} />
+              {/* <Route exact path="/components/pages/signin" */}
             </Switch>
           </div>
         </div>

@@ -10,11 +10,15 @@ export default function SignUp() {
         <Container>
 
             <div>
+                <TextField label="UserName"></TextField>
+                <br></br>
 
-                <TextField>Username</TextField>
-                <TextField>Password</TextField>
+                <TextField label="Password"></TextField>
 
-                <Button>SignUp</Button>
+                <br></br>
+
+                <Button href="signup">SignUp</Button>
+
 
             </div>
 

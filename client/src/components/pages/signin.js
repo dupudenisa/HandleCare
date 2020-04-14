@@ -19,7 +19,7 @@ export default function SignIn() {
 
         <br></br>
         <Button>Sign in</Button>
-        <Button>SignUp</Button>
+        <Button href="signup">SignUp</Button>
 
     </div>
 

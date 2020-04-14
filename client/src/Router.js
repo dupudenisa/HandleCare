@@ -3,7 +3,8 @@ import React, {Component} from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from "./components/NavTabs";
 import SignIn from "./components/pages/signin";
-import MaterialTableDemo from "./components/pages/data"
+import Data from "./components/pages/data"
+import Progress from "./components/pages/progress"
 
 class App extends Component {
 
@@ -14,7 +15,8 @@ class App extends Component {
                     <NavTabs />
 
                     <Route exact path='/signin' component={SignIn} />
-                    <Route path="/data" component={MaterialTableDemo} />
+                    <Route path="/data" component={Data} />
+                    <Route path="/progress" component={Progress}/>
                     
                 </div>
             </Router>

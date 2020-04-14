@@ -15,13 +15,11 @@ exports.create = (req, res) => {
     // Create a Patient
     const patient = {
         name: req.body.name,
-        age: req.body.age,
         currentResident: req.body.currentResident ? req.body.currentResident : 0,
         food: req.body.food,
-        sleep_cycle: req.body.sleep_cycle,
+        sleep: req.body.sleep_cycle,
         exersize: req.body.exersize,
         communication: req.body.communication,
-        outdoor_events: req.body.outdoor_events
 
     };
 

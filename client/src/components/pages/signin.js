@@ -18,6 +18,7 @@ export default function SignIn() {
         <TextField label="Password"></TextField>
 
         <br></br>
+        <Button>Sign in</Button>
         <Button>SignUp</Button>
 
     </div>

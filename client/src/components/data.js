@@ -47,7 +47,7 @@ export default class Data extends Component {
 
     return(
       <MaterialTable
-        title="Patients"
+        title="Residents"
         columns={columns}
         data={data}
 
@@ -122,10 +122,7 @@ export default class Data extends Component {
       />
     
     );
-
-    
-    
-         
+     
     
   }
 }

@@ -1,6 +1,6 @@
 module.exports = app => {
 
- const comments = require("../controllers/comments.controller.js.js");
+ const comments = require("../controllers/comments.controller.js");
 
  var router = require("express").Router();
 

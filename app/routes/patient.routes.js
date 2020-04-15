@@ -6,7 +6,7 @@ module.exports = app => {
         /api/patients/currentResident: GET
     */
 
-    const patients = require("../controllers/patient.controller.js.js");
+    const patients = require("../controllers/patient.controller.js");
     
   
     var router = require("express").Router();

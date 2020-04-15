@@ -1,22 +1,22 @@
 {
-    "development": {
-      "username": "azt6hu9w3rsejn37",
-      "password": "zklpkqlr4oiqcige",
-      "database": "u2hfnp4b3ap1szkm",
-      "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-      "dialect": "mysql"
-    },
-    "test": {
-      "username": "azt6hu9w3rsejn37",
-      "password": "zklpkqlr4oiqcige",
-      "database": "u2hfnp4b3ap1szkm",
-      "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-      "dialect": "mysql",
-      "logging": false
-    },
-    "production": {
-      "use_env_variable": "JAWSDB_URL",
-      "dialect": "mysql"
-    }
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "healthdb",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "testdb",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
   }
+}
   

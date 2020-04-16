@@ -19,6 +19,11 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+
 app.use(routes);
 
 db.sequelize.sync({force: true}).then(() => {

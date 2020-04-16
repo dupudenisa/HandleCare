@@ -1,52 +1,49 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 const path = require("path");
 const app = express();
 const db = require("./app/models");
+const routes = require("./app/routes");
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
+var seed = require("./scripts/seed");
 
-app.use(cors(corsOptions));
+app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  //
-  app.get('*', (req, res) => {
-    res.sendfile(path.join(__dirname = 'client/build/index.html'));
-  })
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
-//build mode
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/public/index.html'));
-})
 
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
-db.sequelize.sync({force: true}).then(() => {
-    console.log("Drop and Resync DB");
-}) ;
-
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Health application." });
-});
-
-require("./app/routes/patient.routes")(app);
-require("./app/routes/comments.routes")(app);
-require("./app/routes/user.routes")(app);
+// require("./app/routes/patient.routes")(app);
+// require("./app/routes/comments.routes")(app);
+// require("./app/routes/user.routes")(app);
 
 
 // set port, listen for requests
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+
+app.use(routes);
+//require("./app/routes/patient.routes")(app);
+
+db.sequelize.sync({force: true}).then(() => {
+  console.log("Drop and Resync DB");
+
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
+}) ;
+
+function runSeeds() {
+  seed.addPatient();
+}
+function seedTime() {
+  setTimeout(runSeeds, 3000);
+}
+seedTime();

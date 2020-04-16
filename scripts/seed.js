@@ -1,4 +1,4 @@
-var db = require("./models");
+var db = require("../app/models");
 
 const seed = {
   addUser: function() {
@@ -6,4 +6,20 @@ const seed = {
       username: "all",
       password: "boo"
     }).then(this.healthdb);
-  }}
+  },
+
+addPatient: function() {
+  db.patients.create({
+    name: "denisa",
+    currentResident: "true",
+    food: "50",
+    sleep: "100",
+    exersize: "70",
+    communication: "50"
+
+  });
+
+}
+}
+
+module.exports = seed

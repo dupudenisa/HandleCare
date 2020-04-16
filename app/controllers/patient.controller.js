@@ -22,7 +22,7 @@ exports.create = (req, res) => {
         communication: req.body.communication,
 
     };
-
+    console.log(patient)
     // Save Patient in the database
     Patient.create(patient)
         .then(data => {

@@ -1,32 +1,34 @@
-import http from "../http-common";
+import axios  from "axios";
 
 class PatientDataService {
   getAll() {
-    return http.get("/patients");
+    return axios.get('/api/patients');
   }
 
   get(id) {
-    return http.get(`/patients/${id}`);
+    return axios.get(`/api/patients/${id}`);
   }
 
   create(data) {
-    return http.post("/patients", data);
+
+    console.log(data);
+    return axios.post("/api/patients", data);
   }
 
   update(id, data) {
-    return http.put(`/patients/${id}`, data);
+    return axios.put(`/api/patients/${id}`, data);
   }
 
   delete(id) {
-    return http.delete(`/patients/${id}`);
+    return axios.delete(`/api/patients/${id}`);
   }
 
   deleteAll() {
-    return http.delete(`/patients`);
+    return axios.delete(`/api/patients`);
   }
 
   findByName(name) {
-    return http.get(`/patients?name=${name}`);
+    return axios.get(`/api/patients?name=${name}`);
   }
 }
 

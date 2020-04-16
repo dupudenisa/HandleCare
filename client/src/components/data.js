@@ -58,7 +58,7 @@ export default class Data extends Component {
               setTimeout(() => {
                 resolve();
 
-                const data = [this.state.data];
+                const data = [this.data];
                 data.push(newData);
 
                 PatientDataService.create(newData)
@@ -82,7 +82,7 @@ export default class Data extends Component {
                 resolve();
                 if (oldData) {
 
-                  const data = [this.state.data];
+                  const data = [this.data];
                   data[data.indexOf(oldData)] = newData;
                   
 
@@ -104,7 +104,7 @@ export default class Data extends Component {
               setTimeout(() => {
                 resolve();
 
-                const data = [this.state.data];
+                const data = [this.data];
                 data.splice(data.indexOf(oldData), 1);
 
                 PatientDataService.delete(oldData.id)

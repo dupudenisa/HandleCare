@@ -12,7 +12,7 @@ export default function NavTabs() {
                 <Tabs>
                     <Tab label="SignIn" href="/signin"/>
                     <Tab label="Home" href="/home"/>
-                    <Tab label="Patients" href="/data"/>
+                    <Tab label="Patients" href="/patients"/>
                     <Tab label="Progress" href="/progress"/>
                 </Tabs>
             </AppBar>

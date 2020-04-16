@@ -17,7 +17,7 @@ exports.create = (req, res) => {
         name: req.body.name,
         currentResident: req.body.currentResident ? req.body.currentResident : 0,
         food: req.body.food,
-        sleep: req.body.sleep_cycle,
+        sleep: req.body.sleep,
         exersize: req.body.exersize,
         communication: req.body.communication,
 

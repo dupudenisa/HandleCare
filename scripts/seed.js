@@ -13,7 +13,7 @@ addPatient: function() {
     name: "denisa",
     currentResident: "true",
     food: "50",
-    sleep: "100",
+    sleep: "50",
     exersize: "70",
     communication: "50"
 

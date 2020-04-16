@@ -6,8 +6,8 @@ import PatientDataService from '../../services/patient.service';
 const state = {
     PatientInfo: [],
 
-    labels: ['January', 'February', 'March',
-        'April', 'May'],
+    labels: ['Food', 'Sleep', 'Exersize',
+        'Communication'],
     datasets: [
         {
             label: 'Progress',

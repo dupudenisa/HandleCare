@@ -28,10 +28,13 @@ export default class Data extends Component {
   }
 
   retrieveData() {
+    
     PatientDataService.getAll()
       .then(response => {
+        console.log(response.data);
+        const data = response.data
         this.setState({
-          data: response.data
+          data: data
         });
       })
       .catch(e => {
@@ -39,13 +42,13 @@ export default class Data extends Component {
       });
   }
 
-  
+
 
   render() {
 
     const { columns, data } = this.state;
 
-    return(
+    return (
       <MaterialTable
         title="Residents"
         columns={columns}
@@ -58,17 +61,18 @@ export default class Data extends Component {
               setTimeout(() => {
                 resolve();
 
-                const data = [this.data];
+                const data = [this.state.data];
                 data.push(newData);
 
                 PatientDataService.create(newData)
-                .then(response => {
-                  this.retrieveData();
-                })
-                .catch(error => {
-                  console.log(error.message)
+                  .then(response => {
+                    this.retrieveData();
+                  })
+                  .catch(error => {
+                    console.log(error.message)
 
-                })
+                  })
+
 
               }, 100);
 
@@ -82,9 +86,9 @@ export default class Data extends Component {
                 resolve();
                 if (oldData) {
 
-                  const data = [this.data];
+                  const data = [this.state.data];
                   data[data.indexOf(oldData)] = newData;
-                  
+
 
                   PatientDataService.update(oldData.id, newData)
                     .then(response => {
@@ -94,17 +98,18 @@ export default class Data extends Component {
                       console.log(error.message)
 
                     })
+
                 }
               }, 100);
-            
+
             }),
-            
+
           onRowDelete: (oldData) =>
             new Promise((resolve) => {
               setTimeout(() => {
                 resolve();
 
-                const data = [this.data];
+                const data = [this.state.data];
                 data.splice(data.indexOf(oldData), 1);
 
                 PatientDataService.delete(oldData.id)
@@ -115,14 +120,16 @@ export default class Data extends Component {
                     console.log(error.message)
 
                   })
+
+
               }, 100);
             }),
         }}
-        
+
       />
-    
+
     );
-     
-    
+
+
   }
 }

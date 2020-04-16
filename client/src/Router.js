@@ -16,7 +16,7 @@ class App extends Component {
                 <div>
                     <NavTabs />
 
-                    <Route exact path='/signin' component={SignIn} />
+                    <Route exact path='/' component={SignIn} />
                     <Route path="/patients" component={Table} />
                     <Route path="/progress" component={Progress}/>
                     <Route path ="/signup" component={SignUp}/>

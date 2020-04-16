@@ -10,8 +10,7 @@ export default function NavTabs() {
         <div>
             <AppBar position="static">
                 <Tabs>
-                    <Tab label="SignIn" href="/signin"/>
-                    <Tab label="Home" href="/home"/>
+                    <Tab label="SignIn" href="/"/>
                     <Tab label="Patients" href="/patients"/>
                     <Tab label="Progress" href="/progress"/>
                 </Tabs>

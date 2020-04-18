@@ -7,6 +7,9 @@ const app = express();
 const db = require("./app/models");
 const routes = require("./app/routes");
 const seed = require("./scripts/seed");
+const session = require("express-session");
+const passport = require("passport");
+const cookiePerser = require("cookie-parser");
 
 app.use(cors());
 
@@ -17,6 +20,13 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.use(
+  session({ secret: "keyboard cat", resave: false, saveUninitialized: true })
+);
+
+app.use(cookiePerser());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(routes);
 

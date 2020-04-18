@@ -1,4 +1,3 @@
-
 /*
     /api/patients: GET, POST, DELETE
     /api/patients/:id: GET, PUT, DELETE
@@ -14,14 +13,14 @@ router.route("/")
     .post(patients.create);
 
 // Matches with "/api/patients/:id"
-
 router
     .route("/:id")
     .get(patients.findOne)
     .put(patients.update)
     .delete(patients.delete);
 
-
-
+router
+    .route("/:name")
+    .get(patients.findByName)
 
 module.exports = router;

@@ -149,3 +149,28 @@ exports.findAllcurrentResident = (req, res) => {
             });
         });
 };
+
+// Update a Patient by the id in the request
+exports.findByName = (req, res) => {
+    const name = req.params.name;
+
+    Patient.update(req.body, {
+        where: { name: name }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Patient was updated successfully."
+                });
+            } else {
+                res.send({
+                    message: `Cannot update Patient with name=${name}. Maybe Patient was not found or req.body is empty!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating Patient with name=" + name
+            });
+        });
+};

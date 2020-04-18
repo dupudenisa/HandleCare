@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
-import Menu from '@material-ui/core/Menu';
+import DropDownMenu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
@@ -32,7 +32,7 @@ function CommentBox(props) {
                     <Button aria-controls="fade-menu" aria-haspopup="true" onClick={handleClick}>
                         Select Residents
                     </Button>
-                    <Menu
+                    <DropDownMenu
                         id="fade-menu"
                         anchorEl={anchorEl}
                         keepMounted
@@ -43,7 +43,7 @@ function CommentBox(props) {
                         <MenuItem onClick={handleClose}>Profile</MenuItem>
                         <MenuItem onClick={handleClose}>My account</MenuItem>
                         <MenuItem onClick={handleClose}>Logout</MenuItem>
-                    </Menu>
+                    </DropDownMenu>
                 </div>
 
                 <label htmlFor="comment">comment:</label>

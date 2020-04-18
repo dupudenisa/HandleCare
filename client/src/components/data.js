@@ -28,7 +28,7 @@ export default class Data extends Component {
   }
 
   retrieveData() {
-    
+
     PatientDataService.getAll()
       .then(response => {
         console.log(response.data);

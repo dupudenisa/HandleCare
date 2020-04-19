@@ -7,6 +7,7 @@ import Data from "./components/data"
 import Progress from "./components/progress"
 import SignUp from "./components/signup"
 import Table from "./components/pages/data"
+import DropDown from "./components/pages/progress";
 
 class App extends Component {
 
@@ -18,7 +19,7 @@ class App extends Component {
 
                     <Route exact path='/' component={SignIn} />
                     <Route path="/patients" component={Table} />
-                    <Route path="/progress" component={Progress}/>
+                    <Route path="/progress" component={DropDown}/>
                     <Route path ="/signup" component={SignUp}/>
                                         
                 </div>

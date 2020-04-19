@@ -1,53 +1,61 @@
 import React from 'react';
 import PatientDataService from '../../services/patient.service';
 import Container from '@material-ui/core/Container';
-import Menu from '@material-ui/core/Menu';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import Fade from '@material-ui/core/Fade';
-import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Progress from '../progress';
 
 export default class DropDown extends React.Component {
 
     constructor(props) {
         super(props);
 
+
         this.state = {
             PatientInfo: [],
+            PatientName: "",
             selectedPatient: 0,
             anchorEl: null,
-            
         }
+
+        this.name = this.state.PatientName
+    }
+
+
+    renderProgress = (PatientName) => {
+
+
+        let myComponent;
+        if (PatientName != "") {
+            myComponent = <Progress key={this.state.PatientName} name={PatientName} />
+
+        } else {
+
+        }
+
+        return (
+            myComponent
+        );
+
+        console.log(myComponent)
+
     }
 
 
     componentDidMount() {
         this.retrieveData();
+        //this.renderProgress();
     }
 
 
-    openMenu = (event) => {
 
-        const anchorEl = event.currentTarget
-
-
-        this.setState({
-            anchorEl: anchorEl,
-        });
-        console.log(anchorEl)
-    }
-
-    handleClose = () => {
-        this.setState({
-            anchorEl: null,
-        });
-    };
-  
-  
     retrieveData() {
 
         PatientDataService.getAll()
             .then(response => {
-                console.log(response.data);
+                //console.log(response.data);
                 const data = response.data
                 this.setState({
                     PatientInfo: data
@@ -58,50 +66,52 @@ export default class DropDown extends React.Component {
             });
     }
 
-    handlePatientChange(event, index, value) {
-    
+    handlePatientChange = (event) => {
+
         this.setState({
-          selectedPatient: value
+            PatientName: event.target.value,
         });
 
-        console.log(`You have selected ${this.state.PatientInfo[value]} color`);
+
     }
 
     render() {
-        const patients = this.state.PatientInfo
-        console.log(patients)
-        const isOpen = Boolean(this.state.anchorEl)
+
         return (
             <div>
-            <Container>
-                <div>
-                <Button aria-controls="fade-menu" 
-                        aria-haspopup="true" 
-                        onClick={this.openMenu}>
-                        Select Residents
-                </Button>
-                <Menu 
-                    anchorEl={this.state.anchorEl}
-                    keepMounted
-                    value={this.state.selectedPatient}
-                    onChange={this.handlePatientChange}
-                    onClose={this.handleClose}
-                    open={isOpen}>
-                    
-                    {patients.map((patient, index) =>
-                        <MenuItem key={index}
+                <Container>
+                    <div>
+                        <FormControl style={{ padding: 10 }}>
+                            <InputLabel style={{ padding: 10 }}>Select Resident</InputLabel>
+                            <Select style={{ width: 150 }}
+                                onChange={this.handlePatientChange}
+                                value={this.state.PatientName}
+                            >
 
-                            value={index}
+                                {this.state.PatientInfo.map((patient, i) =>
+                                    <MenuItem
+                                        value={patient.name}
+                                        key={i}
 
-                            onClick={this.handleClose}
 
-                           >{patient.name}</MenuItem>
-                    )}
-                </Menu>
-                </div>
-            </Container>
+                                    >{patient.name}</MenuItem>
+                                )}
+
+
+
+                            </Select>
+                        </FormControl>
+
+                        {this.renderProgress(this.state.PatientName)}
+
+                    </div>
+                </Container>
+
             </div>
         );
+
+
+
     }
 }
 

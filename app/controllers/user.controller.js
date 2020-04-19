@@ -4,6 +4,16 @@ const Op = db.Sequelize.Op;
 
 
 // Create and Save a new comment
+
+exports.signIn = (req,res) => {
+    res.redirect("/home" + req.params.username);
+}
+
+exports.logout = (req,res) => {
+    req.logout();
+    res.redirect("/")
+}
+
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.username) {
@@ -13,18 +23,20 @@ exports.create = (req, res) => {
         return;
     }
 
-    // Create a comment
+    // Create a user
     const user = {
-        id: req.body.id,
         username: req.body.username,
         password: req.body.password
     
     };
 
-    // Save a comment in the database
+    // Save a user in the database
     User.create(user)
         .then(data => {
             res.send(data);
+        })
+        .then( () => {
+            res.redirect("/patients");
         })
         .catch(err => {
             res.status(500).send({
@@ -51,10 +63,6 @@ exports.findAll = (req, res) => {
             });
         });
 };
-
-
-
-
 
 // Delete a comment with the specified id in the request
 exports.delete = (req, res) => {

@@ -1,28 +1,21 @@
-import http from "../http-common";
+import axios  from "axios";
 
 class UserDataService {
+  signIn(data) {
+    return axios.post('/api/user/signin', data);
+  }
+
+  signUp(data) {
+    return axios.post(`/api/user/signup`, data);
+  }
+
+  logout(data) {
+    return axios.post("/api/user/logout", data);
+  }
+
   getAll() {
-    return http.get("/user");
+    return axios.put("/api/user");
   }
-
-  get(id) {
-    return http.get(`/user/${id}`);
-  }
-
-  create(data) {
-    return http.post("/user", data);
-  }
-
-
-  delete(id) {
-    return http.delete(`/user/${id}`);
-  }
-
-  deleteAll() {
-    return http.delete(`/user`);
-  }
-
-  
 }
 
 export default new UserDataService();

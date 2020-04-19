@@ -1,6 +1,5 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
-import signin from './signin';
+import SignIn from './signin';
 
 export default function Home() {
     return (
@@ -8,7 +7,7 @@ export default function Home() {
         <div>
 
 
-            <Button>Sign in</Button>
+            <SignIn/>
 
 
         </div>
@@ -16,5 +15,3 @@ export default function Home() {
     );
 
 }
-
-export default Home; 

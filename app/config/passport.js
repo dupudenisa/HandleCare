@@ -10,20 +10,20 @@ passport.use(
       usernameField: "username"
     },
     function(username, password, done) {
-      var dbUser = db.User;
-      //console.log("it works" + dbUser);
+      var dbUser = db.user;
+      console.log("it works" + dbUser);
       dbUser.findOne({ where: { username: username } }).then(function(dbUser) {
-        //console.log("within local strategy", dbUser);
+        console.log("within local strategy", dbUser);
         // If there's no user with the given email
         if (!dbUser) {
-          //console.log("im here - user");
+          console.log("im here - user");
           return done(null, false, {
             message: "Incorrect username."
           });
         }
         // If there is a user with the given email, but the password the user gives us is incorrect
         else if (!dbUser.validPassword(password)) {
-          //console.log("im here, password");
+          console.log("im here, password");
           return done(null, false, {
             message: "Incorrect password."
           });

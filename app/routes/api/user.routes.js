@@ -1,20 +1,21 @@
-module.exports = app => {
 
-    const user = require("../../controllers/user.controller.js");
+var passport = require("../../config/passport")
 
-    var router = require("express").Router();
+const user = require("../../controllers/user.controller.js");
 
-    //create a new user
-    router.post("/", user.create);
+var router = require("express").Router();
 
-    //retrieve all users
-    router.get("/", user.findAll);
 
-    router.delete("/:id", user.delete);
+router.route("/signup")
+    .post(user.create)
 
-    //delete all  Patient
-    router.delete("/", user.deleteAll);
+router.route("/signin")
+    .post(passport.authenticate("local"), user.signIn)
 
-    app.use('/api/user', router);
+router.route("/logout")
+    .post(user.logout)
 
-};
+router.route("/")
+    .get(user.findAll)
+
+module.exports = router;

@@ -2,13 +2,14 @@ var db = require("../app/models");
 
 const seed = {
   addUser: function() {
-    db.User.create({
+    db.user.create({
       username: "all",
       password: "boo"
     }).then(this.healthdb);
   },
 
 addPatient: function() {
+  
   db.patients.create({
     name: "denisa",
     currentResident: "true",
@@ -18,6 +19,27 @@ addPatient: function() {
     communication: "50"
 
   });
+
+  db.patients.create({
+    name: "Sue",
+    currentResident: "true",
+    food: "100",
+    sleep: "20",
+    exersize: "80",
+    communication: "100"
+
+  });
+
+  db.patients.create({
+    name: "Bill",
+    currentResident: "true",
+    food: "80",
+    sleep: "100",
+    exersize: "20",
+    communication: "50"
+
+  });
+
 
 }
 }
